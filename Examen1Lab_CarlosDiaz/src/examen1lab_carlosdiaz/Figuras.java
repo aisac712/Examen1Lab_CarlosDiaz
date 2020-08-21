@@ -17,5 +17,34 @@ public class Figuras extends Articulo{
         this.instrucciones = instrucciones;
         this.tiempoGar = tiempoGar;
     }
+
+    public String getDescF() {
+        return descF;
+    }
+
+    public void setDescF(String descF) {
+        this.descF = descF;
+    }
+
+    public String getInstrucciones() {
+        return instrucciones;
+    }
+
+    public void setInstrucciones(String instrucciones) {
+        this.instrucciones = instrucciones;
+    }
+
+    public int getTiempoGar() {
+        return tiempoGar;
+    }
+
+    public void setTiempoGar(int tiempoGar) {
+        this.tiempoGar = tiempoGar;
+    }
+
+    @Override
+    public String toString() {
+        return "Figuras{" + "descF=" + descF + ", instrucciones=" + instrucciones + ", tiempoGar=" + tiempoGar + '}';
+    }
     
 }
