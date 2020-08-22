@@ -44,7 +44,7 @@ public class Juegos extends Articulo{
 
     @Override
     public String toString() {
-        return "Juegos{" + "edicion=" + edicion + ", casaElab=" + casaElab + ", pais=" + pais + '}';
+        return super.getNombre();
     }
     
 }

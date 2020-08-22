@@ -129,6 +129,17 @@ public class JFrame extends javax.swing.JFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         tablaArticulos = new javax.swing.JTable();
         jInternalFrame6 = new javax.swing.JInternalFrame();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        cb_emisores = new javax.swing.JComboBox<>();
+        cb_receptores = new javax.swing.JComboBox<>();
+        jLabel35 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        ta_mensaje = new javax.swing.JTextArea();
+        jButton5 = new javax.swing.JButton();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        tablaMsj = new javax.swing.JTable();
+        jLabel36 = new javax.swing.JLabel();
 
         jInternalFrame1.setVisible(true);
 
@@ -769,15 +780,86 @@ public class JFrame extends javax.swing.JFrame {
 
         jInternalFrame6.setVisible(true);
 
+        jLabel33.setText("Receptor");
+
+        jLabel34.setText("Emisor");
+
+        jLabel35.setText("Mensaje");
+
+        ta_mensaje.setColumns(20);
+        ta_mensaje.setRows(5);
+        jScrollPane7.setViewportView(ta_mensaje);
+
+        jButton5.setText("Enviar");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+
+        tablaMsj.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Emisor", "Receptor", "Mensaje"
+            }
+        ));
+        jScrollPane8.setViewportView(tablaMsj);
+
+        jLabel36.setText("Mensajes Enviados");
+
         javax.swing.GroupLayout jInternalFrame6Layout = new javax.swing.GroupLayout(jInternalFrame6.getContentPane());
         jInternalFrame6.getContentPane().setLayout(jInternalFrame6Layout);
         jInternalFrame6Layout.setHorizontalGroup(
             jInternalFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jInternalFrame6Layout.createSequentialGroup()
+                .addGroup(jInternalFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jInternalFrame6Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(jInternalFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel35)
+                            .addGroup(jInternalFrame6Layout.createSequentialGroup()
+                                .addGroup(jInternalFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel34)
+                                    .addComponent(jLabel33))
+                                .addGap(47, 47, 47)
+                                .addGroup(jInternalFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cb_emisores, 0, 105, Short.MAX_VALUE)
+                                    .addComponent(cb_receptores, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jInternalFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jButton5)
+                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jInternalFrame6Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jInternalFrame6Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel36)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jInternalFrame6Layout.setVerticalGroup(
             jInternalFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jInternalFrame6Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(jInternalFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel34)
+                    .addComponent(cb_emisores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jInternalFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel33)
+                    .addComponent(cb_receptores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel35)
+                .addGap(4, 4, 4)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton5)
+                .addGap(62, 62, 62)
+                .addComponent(jLabel36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         tp_verPer.addTab("Wacsap", jInternalFrame6);
@@ -869,6 +951,12 @@ public class JFrame extends javax.swing.JFrame {
             DefaultComboBoxModel dc2 = (DefaultComboBoxModel) cb_personasA.getModel();      //este para el comboBox de Artículos
             dc2.addElement(g);
             cb_personasA.setModel(dc2);
+            DefaultComboBoxModel dc3 = (DefaultComboBoxModel) cb_emisores.getModel();      //este para emisores de msj
+            dc3.addElement(g);
+            cb_emisores.setModel(dc3);
+            DefaultComboBoxModel dc4 = (DefaultComboBoxModel) cb_receptores.getModel();      //este para receptores de msj
+            dc4.addElement(g);
+            cb_receptores.setModel(dc4);
             
             //cb_personasA
 
@@ -889,6 +977,12 @@ public class JFrame extends javax.swing.JFrame {
             DefaultComboBoxModel dc2 = (DefaultComboBoxModel) cb_personasA.getModel();
             dc2.addElement(p);
             cb_personasA.setModel(dc2);
+            DefaultComboBoxModel dc3 = (DefaultComboBoxModel) cb_emisores.getModel();      //este para emisores de msj
+            dc3.addElement(p);
+            cb_emisores.setModel(dc3);
+            DefaultComboBoxModel dc4 = (DefaultComboBoxModel) cb_receptores.getModel();      //este para receptores de msj
+            dc4.addElement(p);
+            cb_receptores.setModel(dc4);
         }
 
         ftf_id.setText("");  ftf_edad.setText("");  rb_h.setSelected(false);  rb_m.setSelected(false);  tf_nombre.setText("");
@@ -945,6 +1039,9 @@ public class JFrame extends javax.swing.JFrame {
             vol = Integer.parseInt(ftf_volumen.getText());
             descC = ta_descC.getText();
             estado = Integer.parseInt(ftf_estado.getText());
+            while(estado<=0 || estado>=10){                 //validación
+                estado = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingresá un estado en rango 1-10"));
+            }
             
             Comic c = new Comic(vol, descC, estado, nombre, color, desc, editorial, tamañi, puntuacion, p_ingreso);
             articulos.add(c);
@@ -978,6 +1075,7 @@ public class JFrame extends javax.swing.JFrame {
             cb_articulos.setModel(dc);
             
         }
+        JOptionPane.showMessageDialog(this, "Articulo almacenado exitosamente");
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void cb_articulosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_articulosItemStateChanged
@@ -1027,6 +1125,28 @@ public class JFrame extends javax.swing.JFrame {
         tf_ocupacion.enable(true);  tf_horario.enable(true);  ftf_semanas.enable(true);  ftf_sueldo.enable(true);    //habilitar controladores
         tf_user.enable(false);   tf_password.enable(false);  cb_cargo.enable(false);        //inhabilitar controladores por si las de hule
     }//GEN-LAST:event_rb_pMouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        Persona emisor = (Persona) cb_emisores.getSelectedItem();
+        Persona receptor = (Persona) cb_receptores.getSelectedItem();
+        String msj = ta_mensaje.getText();
+        
+        Mensaje m = new Mensaje(emisor, receptor, msj);
+        mensajes.add(m);
+        
+        //Mensaje men = (Mensaje) cb_amigos.getSelectedItem();
+        //INMEDIATAMENTE METO EL MENSAJ EN EL TABLE
+            Object[] newrow = {
+                m.getEmisor(),
+                m.getReceptor(),
+                m.getMsj()
+            };
+            
+            DefaultTableModel modelo = (DefaultTableModel) tablaMsj.getModel();
+            modelo.addRow(newrow);
+            tablaMsj.setModel(modelo);
+    }//GEN-LAST:event_jButton5MouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1079,10 +1199,12 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.ButtonGroup bg_tipo;
     private javax.swing.JComboBox<String> cb_articulos;
     private javax.swing.JComboBox<String> cb_cargo;
+    private javax.swing.JComboBox<String> cb_emisores;
     private javax.swing.JComboBox<String> cb_personas;
     private javax.swing.JComboBox<String> cb_personas1;
     private javax.swing.JComboBox<String> cb_personas2;
     private javax.swing.JComboBox<String> cb_personasA;
+    private javax.swing.JComboBox<String> cb_receptores;
     private javax.swing.JFormattedTextField ftf_altura;
     private javax.swing.JFormattedTextField ftf_edad;
     private javax.swing.JFormattedTextField ftf_edicion;
@@ -1099,6 +1221,7 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JInternalFrame jInternalFrame2;
     private javax.swing.JInternalFrame jInternalFrame3;
@@ -1131,6 +1254,10 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1143,6 +1270,8 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JRadioButton rb_c;
     private javax.swing.JRadioButton rb_f;
     private javax.swing.JRadioButton rb_g;
@@ -1154,7 +1283,9 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea ta_descC;
     private javax.swing.JTextArea ta_descFA;
     private javax.swing.JTextArea ta_descFB;
+    private javax.swing.JTextArea ta_mensaje;
     private javax.swing.JTable tablaArticulos;
+    private javax.swing.JTable tablaMsj;
     private javax.swing.JTable tablaPersonas;
     private javax.swing.JTextField tf_casa;
     private javax.swing.JTextField tf_editorial;
@@ -1168,7 +1299,8 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JTextField tf_user;
     private javax.swing.JTabbedPane tp_verPer;
     // End of variables declaration//GEN-END:variables
-ArrayList<Persona> personas = new ArrayList();
+ArrayList<Persona> personas = new ArrayList();          //arraylist donde se almacena todo
 ArrayList<Articulo> articulos = new ArrayList();
+ArrayList<Mensaje> mensajes = new ArrayList();
 
 }
