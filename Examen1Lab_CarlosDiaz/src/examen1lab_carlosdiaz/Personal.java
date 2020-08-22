@@ -52,7 +52,7 @@ public class Personal extends Persona{
 
     @Override
     public String toString() {
-        return "Personal{" + "ocupacion=" + ocupacion + ", horario=" + horario + ", semanas=" + semanas + ", sueldo=" + sueldo + '}';
+        return super.getNombre();
     }
     
 }

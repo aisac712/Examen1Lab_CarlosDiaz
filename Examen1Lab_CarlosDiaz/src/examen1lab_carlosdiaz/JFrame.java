@@ -42,7 +42,6 @@ public class JFrame extends javax.swing.JFrame {
         tp_verPer = new javax.swing.JTabbedPane();
         jInternalFrame2 = new javax.swing.JInternalFrame();
         jLabel1 = new javax.swing.JLabel();
-        tf_id = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         tf_nombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -73,6 +72,7 @@ public class JFrame extends javax.swing.JFrame {
         ftf_sueldo = new javax.swing.JFormattedTextField();
         tf_horario = new javax.swing.JTextField();
         ftf_semanas = new javax.swing.JFormattedTextField();
+        ftf_id = new javax.swing.JFormattedTextField();
         jInternalFrame3 = new javax.swing.JInternalFrame();
         cb_personas = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -124,6 +124,10 @@ public class JFrame extends javax.swing.JFrame {
         ftf_meses = new javax.swing.JFormattedTextField();
         jButton4 = new javax.swing.JButton();
         jInternalFrame5 = new javax.swing.JInternalFrame();
+        cb_articulos = new javax.swing.JComboBox<>();
+        jLabel32 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tablaArticulos = new javax.swing.JTable();
         jInternalFrame6 = new javax.swing.JInternalFrame();
 
         jInternalFrame1.setVisible(true);
@@ -178,9 +182,19 @@ public class JFrame extends javax.swing.JFrame {
 
         bg_tipo.add(rb_g);
         rb_g.setText("Gerente");
+        rb_g.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rb_gMouseClicked(evt);
+            }
+        });
 
         bg_tipo.add(rb_p);
         rb_p.setText("Personal");
+        rb_p.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rb_pMouseClicked(evt);
+            }
+        });
 
         jLabel9.setText("User");
 
@@ -198,15 +212,17 @@ public class JFrame extends javax.swing.JFrame {
 
         jLabel14.setText("Sueldo");
 
-        ftf_edad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        ftf_edad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
-        ftf_altura.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        ftf_altura.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
-        ftf_peso.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        ftf_peso.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
-        ftf_sueldo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        ftf_sueldo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
-        ftf_semanas.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        ftf_semanas.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+
+        ftf_id.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
 
         javax.swing.GroupLayout jInternalFrame2Layout = new javax.swing.GroupLayout(jInternalFrame2.getContentPane());
         jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
@@ -265,12 +281,12 @@ public class JFrame extends javax.swing.JFrame {
                                 .addComponent(ftf_edad, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jInternalFrame2Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                                 .addComponent(tf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jInternalFrame2Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addGap(54, 54, 54)
-                                .addComponent(tf_id, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ftf_id, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(64, 64, 64)
                         .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
@@ -281,7 +297,7 @@ public class JFrame extends javax.swing.JFrame {
                             .addComponent(tf_estado, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ftf_altura, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ftf_peso, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 4, Short.MAX_VALUE))
+                .addGap(0, 18, Short.MAX_VALUE))
         );
         jInternalFrame2Layout.setVerticalGroup(
             jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,9 +305,9 @@ public class JFrame extends javax.swing.JFrame {
                 .addGap(63, 63, 63)
                 .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(tf_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(tf_estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ftf_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -309,7 +325,7 @@ public class JFrame extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(rb_h)
                     .addComponent(rb_m))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
                 .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rb_g)
                     .addComponent(rb_p))
@@ -363,7 +379,7 @@ public class JFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nombre", "Sexo", "Edad"
+                "Tipo", "ID", "Nombre", "Esxo", "Edad"
             }
         ));
         jScrollPane1.setViewportView(tablaPersonas);
@@ -431,7 +447,7 @@ public class JFrame extends javax.swing.JFrame {
                     .addComponent(cb_personas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
                 .addGroup(jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cb_personas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
@@ -695,7 +711,7 @@ public class JFrame extends javax.swing.JFrame {
                         .addComponent(jLabel31)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ftf_meses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                         .addComponent(jButton4)))
                 .addContainerGap())
         );
@@ -704,15 +720,49 @@ public class JFrame extends javax.swing.JFrame {
 
         jInternalFrame5.setVisible(true);
 
+        cb_articulos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_articulosItemStateChanged(evt);
+            }
+        });
+
+        jLabel32.setText("Artículos");
+
+        tablaArticulos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Tipo", "Nombre", "Color", "Tamaño"
+            }
+        ));
+        jScrollPane6.setViewportView(tablaArticulos);
+
         javax.swing.GroupLayout jInternalFrame5Layout = new javax.swing.GroupLayout(jInternalFrame5.getContentPane());
         jInternalFrame5.getContentPane().setLayout(jInternalFrame5Layout);
         jInternalFrame5Layout.setHorizontalGroup(
             jInternalFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jInternalFrame5Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel32)
+                .addGap(32, 32, 32)
+                .addComponent(cb_articulos, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame5Layout.createSequentialGroup()
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jInternalFrame5Layout.setVerticalGroup(
             jInternalFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jInternalFrame5Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(jInternalFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel32)
+                    .addComponent(cb_articulos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(307, Short.MAX_VALUE))
         );
 
         tp_verPer.addTab("Ver Artículos", jInternalFrame5);
@@ -737,16 +787,13 @@ public class JFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(tp_verPer, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addGap(47, 47, 47)
+                .addComponent(tp_verPer, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(112, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(tp_verPer, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(tp_verPer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
         );
 
         pack();
@@ -756,24 +803,37 @@ public class JFrame extends javax.swing.JFrame {
         if(tp_verPer.getSelectedIndex()==0 || tp_verPer.getSelectedIndex()==1 || tp_verPer.getSelectedIndex()==2 ||
             tp_verPer.getSelectedIndex()==3){
             ingresar();
+            tf_ocupacion.enable(false);  tf_horario.enable(false);  ftf_semanas.enable(false);  ftf_sueldo.enable(false); //inhabilitar
+            tf_user.enable(false);   tf_password.enable(false);  cb_cargo.enable(false);        //inhabilitar controladores
         }
-
+        
     }//GEN-LAST:event_tp_verPerStateChanged
 
     private void cb_personasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_personasItemStateChanged
         // TODO add your handling code here:
         if (evt.getStateChange()==2) {
             Persona p = (Persona) cb_personas.getSelectedItem();
-
-            Object[] newrow = {
-                p.getId(),
-                p.getNombre(),
-                p.getSexo(),
-                p.getEdad()
-            };
-
             DefaultTableModel modelo = (DefaultTableModel) tablaPersonas.getModel();
-            modelo.addRow(newrow);
+            
+            if(p instanceof Gerente){
+                Object[] newrow = {
+                    "Gerente",
+                    p.getId(),
+                    p.getNombre(),
+                    p.getSexo(),
+                    p.getEdad()
+                };
+                modelo.addRow(newrow);
+            } else if(p instanceof Personal){
+                Object[] newrow = {
+                    "Personal",
+                    p.getId(),
+                    p.getNombre(),
+                    p.getSexo(),
+                    p.getEdad()
+                };
+                modelo.addRow(newrow);
+            }
             tablaPersonas.setModel(modelo);
 
         }
@@ -781,7 +841,7 @@ public class JFrame extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         int id;   String nombre;   int edad;   String sexo;   String estadoCiv;   double altura;   double peso;
-        id = Integer.parseInt(tf_id.getText());         //parseo
+        id = Integer.parseInt(ftf_id.getText());         //parseo
         nombre = tf_nombre.getText();
         edad = Integer.parseInt(ftf_edad.getText());
         estadoCiv = tf_estado.getText();
@@ -794,7 +854,7 @@ public class JFrame extends javax.swing.JFrame {
         }
 
         if(rb_g.isSelected()){
-            tf_ocupacion.enable(false);  tf_horario.enable(false);  ftf_semanas.enable(false);  ftf_sueldo.enable();    //inhabilitar controladores
+            
             String user;   String pw;  String cargo;
             user = tf_user.getText();
             pw = tf_password.getText();
@@ -813,7 +873,7 @@ public class JFrame extends javax.swing.JFrame {
             //cb_personasA
 
         } else{
-            tf_user.enable(false);   tf_password.enable(false);  cb_cargo.enable(false);        //inhabilitar controladores
+            
             String ocupacion;  String horario;   int semanas;   int sueldo;
             ocupacion = tf_ocupacion.getText();
             horario = tf_horario.getText();
@@ -831,11 +891,13 @@ public class JFrame extends javax.swing.JFrame {
             cb_personasA.setModel(dc2);
         }
 
-        tf_id.setText("");  ftf_edad.setText("");  rb_h.setSelected(true);  rb_m.setSelected(false);  tf_nombre.setText("");
+        ftf_id.setText("");  ftf_edad.setText("");  rb_h.setSelected(false);  rb_m.setSelected(false);  tf_nombre.setText("");
         tf_estado.setText("");  ftf_altura.setText("");  ftf_peso.setText("");
-        rb_g.setSelected(true);  rb_p.setSelected(false);
+        rb_g.setSelected(false);  rb_p.setSelected(false);
         tf_user.setText("");  tf_password.setText("");  cb_cargo.setSelectedIndex(0);
         tf_ocupacion.setText("");  tf_horario.setText("");  ftf_semanas.setText("");  ftf_sueldo.setText("");
+        tf_ocupacion.enable(false);  tf_horario.enable(false);  ftf_semanas.enable(false);  ftf_sueldo.enable(false); //inhabilitar
+        tf_user.enable(false);   tf_password.enable(false);  cb_cargo.enable(false);        //inhabilitar controladores
 
         JOptionPane.showMessageDialog(this, "Persona almacenado exitosamente");
     }//GEN-LAST:event_jButton1MouseClicked
@@ -878,7 +940,93 @@ public class JFrame extends javax.swing.JFrame {
         puntuacion = Integer.parseInt(ftf_puntuacion.getText());
         p_ingreso = (Persona) cb_personasA.getSelectedItem();
         
+        if(rb_c.isSelected()){              //para campos de comic
+            int vol; String descC; int estado;//va concidionado de 1-10
+            vol = Integer.parseInt(ftf_volumen.getText());
+            descC = ta_descC.getText();
+            estado = Integer.parseInt(ftf_estado.getText());
+            
+            Comic c = new Comic(vol, descC, estado, nombre, color, desc, editorial, tamañi, puntuacion, p_ingreso);
+            articulos.add(c);
+            
+            DefaultComboBoxModel dc = (DefaultComboBoxModel) cb_articulos.getModel();       //para que aparezca en listar Artículos
+            dc.addElement(c);
+            cb_articulos.setModel(dc);
+            
+        } else if(rb_j.isSelected()){       //para juegos
+            int edicion;  String casaElab;  String pais;
+            edicion = Integer.parseInt(ftf_edicion.getText());
+            casaElab = tf_casa.getText();
+            pais = tf_pais.getText();
+            Juegos j = new Juegos(edicion, casaElab, pais, nombre, color, desc, editorial, tamañi, puntuacion, p_ingreso);
+            articulos.add(j);
+            
+            DefaultComboBoxModel dc = (DefaultComboBoxModel) cb_articulos.getModel();       //para que aparezca en listar Artículos
+            dc.addElement(j);
+            cb_articulos.setModel(dc);
+            
+        } else if(rb_f.isSelected()){       //para figuras
+            String descF; String instrucciones; int tiempoGar;
+            descF = ta_descFA.getText();
+            instrucciones = ta_descFB.getText();
+            tiempoGar = Integer.parseInt(ftf_meses.getText());
+            Figuras f = new Figuras(descF, instrucciones, tiempoGar, nombre, color, desc, editorial, tamañi, puntuacion, p_ingreso);
+            articulos.add(f);
+            
+            DefaultComboBoxModel dc = (DefaultComboBoxModel) cb_articulos.getModel();       //para que aparezca en listar Artículos
+            dc.addElement(f);
+            cb_articulos.setModel(dc);
+            
+        }
     }//GEN-LAST:event_jButton4MouseClicked
+
+    private void cb_articulosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_articulosItemStateChanged
+        // TODO add your handling code here:
+        if (evt.getStateChange()==2) {
+            Articulo a = (Articulo) cb_articulos.getSelectedItem();
+            DefaultTableModel modelo = (DefaultTableModel) tablaArticulos.getModel();
+            
+            if(a instanceof Comic){         //para indicar el tipo, usamos instance of
+                Object[] newrow = {
+                "Comic",
+                a.getNombre(),
+                a.getColor(),
+                a.getTamañi()
+                };
+                modelo.addRow(newrow);
+            } else if(a instanceof Juegos){
+                Object[] newrow = {
+                "Juego",
+                a.getNombre(),
+                a.getColor(),
+                a.getTamañi()
+                };
+                modelo.addRow(newrow);
+            } else if(a instanceof Figuras){
+                Object[] newrow = {
+                "Figura",
+                a.getNombre(),
+                a.getColor(),
+                a.getTamañi()
+                };
+                modelo.addRow(newrow);
+            }
+            tablaArticulos.setModel(modelo);
+            
+        }
+    }//GEN-LAST:event_cb_articulosItemStateChanged
+
+    private void rb_gMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rb_gMouseClicked
+        // TODO add your handling code here:
+        tf_user.enable(true);   tf_password.enable(true);  cb_cargo.enable(true);        //habilitar controladores
+        tf_ocupacion.enable(false);  tf_horario.enable(false);  ftf_semanas.enable(false);  ftf_sueldo.enable(false); //inhabilitar por si las de hule
+    }//GEN-LAST:event_rb_gMouseClicked
+
+    private void rb_pMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rb_pMouseClicked
+        // TODO add your handling code here:
+        tf_ocupacion.enable(true);  tf_horario.enable(true);  ftf_semanas.enable(true);  ftf_sueldo.enable(true);    //habilitar controladores
+        tf_user.enable(false);   tf_password.enable(false);  cb_cargo.enable(false);        //inhabilitar controladores por si las de hule
+    }//GEN-LAST:event_rb_pMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -909,7 +1057,8 @@ public class JFrame extends javax.swing.JFrame {
             public void run() {
                 new JFrame().setVisible(true);
             }
-        });       
+        });     
+        
     }
 
     static void ingresar(){
@@ -928,6 +1077,7 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.ButtonGroup bg_artic;
     private javax.swing.ButtonGroup bg_sexo;
     private javax.swing.ButtonGroup bg_tipo;
+    private javax.swing.JComboBox<String> cb_articulos;
     private javax.swing.JComboBox<String> cb_cargo;
     private javax.swing.JComboBox<String> cb_personas;
     private javax.swing.JComboBox<String> cb_personas1;
@@ -937,6 +1087,7 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField ftf_edad;
     private javax.swing.JFormattedTextField ftf_edicion;
     private javax.swing.JFormattedTextField ftf_estado;
+    private javax.swing.JFormattedTextField ftf_id;
     private javax.swing.JFormattedTextField ftf_meses;
     private javax.swing.JFormattedTextField ftf_peso;
     private javax.swing.JFormattedTextField ftf_puntuacion;
@@ -979,6 +1130,7 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -990,6 +1142,7 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JRadioButton rb_c;
     private javax.swing.JRadioButton rb_f;
     private javax.swing.JRadioButton rb_g;
@@ -1001,12 +1154,12 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea ta_descC;
     private javax.swing.JTextArea ta_descFA;
     private javax.swing.JTextArea ta_descFB;
+    private javax.swing.JTable tablaArticulos;
     private javax.swing.JTable tablaPersonas;
     private javax.swing.JTextField tf_casa;
     private javax.swing.JTextField tf_editorial;
     private javax.swing.JTextField tf_estado;
     private javax.swing.JTextField tf_horario;
-    private javax.swing.JTextField tf_id;
     private javax.swing.JTextField tf_nombre;
     private javax.swing.JTextField tf_nombre1;
     private javax.swing.JTextField tf_ocupacion;
@@ -1016,5 +1169,6 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JTabbedPane tp_verPer;
     // End of variables declaration//GEN-END:variables
 ArrayList<Persona> personas = new ArrayList();
+ArrayList<Articulo> articulos = new ArrayList();
 
 }
